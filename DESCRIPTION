@@ -1,0 +1,20 @@
+Package: topmodelr
+Title: Topic Models in R
+Version: 0.0.1
+Authors@R: 
+    person(given = "Donatus",
+           family = "Herre",
+           role = c("aut", "cre"),
+           email = "git@herre.io")
+Description: Latent Dirichlet allocation and BTM topic models
+    via R libraries topicmodels and BTM, both providing interfaces
+    to C++ implementations and are used with Gibbs Sampling here.
+License: What license it uses
+Encoding: UTF-8
+LazyData: true
+Imports:
+    BTM,
+    LDAvis,
+    RcppAnnoy,
+    tm,
+    topicmodels

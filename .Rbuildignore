@@ -1,0 +1,4 @@
+^packrat/
+^\.Rprofile$
+^inst/topmax/lda\.RDS
+^inst/topmax/btm\.RDS
