@@ -1,6 +1,6 @@
 #' @export
 corpus_freq <- function(dtm) {
-  sort(slam::colSums(dtm), decreasing = T)
+  sort(slam::col_sums(dtm), decreasing = T)
 }
 
 #' @export
