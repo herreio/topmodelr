@@ -1,18 +1,13 @@
-#' @include pyimp.R
-NULL
-
 # ------------------------- #
 # -- TOPIC SEARCH FUNCS -- #
 # ----------------------- #
 
 infer_query <- function(lda, query) {
-  query <- preprocess(query)
   dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))  
   topicmodels::posterior(lda,dtm,lda@control)$topics
 }
 
 lda_search <- function(lda, query, n=10, t=2) {
-  query <- preprocess(query)
   dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))
   control <- lda@control
   post <- topicmodels::posterior(lda,dtm,control)$topics
@@ -21,7 +16,6 @@ lda_search <- function(lda, query, n=10, t=2) {
 }
 
 btm_search <- function(btm, query, n=10, t=2) {
-  query <- preprocess(query)
   token <- unlist(strsplit(query, "\\s"))
   docs <- rep(1,times=length(token))
   post <- predict(btm, data.frame(docs,token))
