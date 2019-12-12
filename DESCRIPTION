@@ -1,5 +1,5 @@
-Package: modelsim
-Title: Topic Model Similarity (LDA, BTM)
+Package: topmodelr
+Title: Topic Modeling in R (LDA, BTM)
 Version: 0.0.1
 Authors@R: 
     person(given = "Donatus",
@@ -7,12 +7,12 @@ Authors@R:
            role = c("aut", "cre"),
            email = "git@herre.io")
 Description: For model creation the latent Dirichlet allocation and the
-    biterm topic model via R libraries topicmodels and BTM are used
-    with Gibbs Sampling as inference method. After infering the models,
-    the similarity of the documents is determined with regard to their
+    biterm topic model via R libraries topicmodels and BTM are used with
+    Gibbs Sampling as inference method. After infering the models, the
+    similarity of the documents can be determined with regard to their
     topic distributions via the R interface to the approximate nearest
-    neighbor library Annoy. The measurement of the title similarity by
-    topics can be used to retrieve the top n most similar titles to a
+    neighbor library Annoy. The measurement of the document similarity by
+    topics can be used to retrieve the top n most similar documents to a
     given document.
 License: What license it uses
 Encoding: UTF-8
