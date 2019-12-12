@@ -2,5 +2,5 @@
 #'
 #' @export
 titlesearch <- function(){
-  shiny::runApp(system.file("search", package="topicmodelr"), launch.browser = T)
+  shiny::runApp(system.file("search", package="tisim"), launch.browser = T)
 }
