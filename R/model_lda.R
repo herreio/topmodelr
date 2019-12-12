@@ -41,9 +41,9 @@ model_vis <- function(fitted_model, doc_term, visdir="./doc/ldavis", browser=F) 
 }
 
 #' @export
-fit_model_vis <- function(doc_term, k, vis.dir="./doc", browser=FALSE){
+fit_model_vis <- function(doc_term, k, vis_dir="./doc", browser=FALSE){
     fitted_model <- fit_model(doc_term, k)
-    model_vis(fitted_model, doc_term, vis.dir, browser)
+    model_vis(fitted_model, doc_term, vis_dir, browser)
 }
 
 #' @export
@@ -65,7 +65,7 @@ vis_from_rds <- function(rds_path, doc_term, browser=FALSE) {
   cat(paste("vis model: ", idx, "\n"))
   t1 <- Sys.time()
   cat(paste("start time:", t1, "\n"))
-  model_vis(fitted_model, doc_term, vis.dir=out, browser=browser)
+  model_vis(fitted_model, doc_term, vis_dir=out, browser=browser)
   t2 <- Sys.time()
   cat("done visualizing model!\n")
   elapsed <- difftime(t2, t1, units="mins")
