@@ -1,3 +1,7 @@
+# ------------------------- #
+# -- BTM TOPIC MODELING -- #
+# ----------------------- #
+
 #' @export
 fit_bi_model <- function(docid_term, k) {
     cat(paste("fit Biterm model with", k, "topics\n"))

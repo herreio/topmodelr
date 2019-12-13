@@ -1,3 +1,7 @@
+# ------------------- #
+# -- CORPUS FUNCS -- #
+# ----------------- #
+
 #' @export
 corpus_freq <- function(dtm) {
   sort(slam::col_sums(dtm), decreasing = T)
