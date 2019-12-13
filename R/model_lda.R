@@ -33,10 +33,10 @@ model_json <- function(fitted_model, doc_term) {
 }
 
 #' @export
-model_vis <- function(fitted_model, doc_term, visdir="./doc/ldavis", browser=F) {
+model_vis <- function(fitted_model, doc_term, vis_dir="./doc/ldavis", browser=F) {
   json_lda <- model_json(fitted_model, doc_term)
   print("start server...")
-  LDAvis::serVis(json_lda, out.dir = visdir, open.browser = browser, encoding="UTF-8")
+  LDAvis::serVis(json_lda, out.dir = vis_dir, open.browser = browser, encoding="UTF-8")
   print("success!")
 }
 
