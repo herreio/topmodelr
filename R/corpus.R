@@ -4,6 +4,12 @@ corpus_freq <- function(dtm) {
 }
 
 #' @export
+corpus_filter <- function(dtm, query) {
+  dtm <- dtm[, grepl(query, dtm$dimnames$Terms)]
+  dtm[slam::row_sums(dtm) > 0, ]    # return none empty docs
+}
+
+#' @export
 corpus_del_max_freq <- function(dtm, x = 100) {
   n <- as.numeric(corpus_freq(dtm)[x])
   dtm <- dtm[,which(slam::col_sums(dtm) < n)]
