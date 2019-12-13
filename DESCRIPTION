@@ -24,3 +24,4 @@ Imports:
     stringr,
     tm,
     topicmodels
+RoxygenNote: 7.0.2
