@@ -13,7 +13,7 @@ fit_bi_model <- function(docid_term, k) {
 }
 
 #' @export
-fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="", model_dir="inst/topmax/lda.RDS") {
+fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="", model_dir="") {
     for (k in topics) {
         bimod <- fit_bi_model(docid_term, k)
         saveRDS(bimod, file.path(

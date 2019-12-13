@@ -47,11 +47,11 @@ fit_model_vis <- function(doc_term, k, vis_dir="./doc", browser=FALSE){
 }
 
 #' @export
-fit_and_save_models <- function(doc_term, topics=seq(25,200,25), fileid="", moddir="inst/maxmod/lda.RDS") {
+fit_and_save_models <- function(doc_term, topics=seq(25,200,25), fileid="", model_dir="") {
     for(k in topics) {
         topmod <- fit_model(doc_term, k)
         saveRDS(topmod, file.path(
-          moddir,
+          model_dir,
           paste0("lda_",fileid,"_t",k,"_",Sys.Date(),".RDS")
         ))
     }
