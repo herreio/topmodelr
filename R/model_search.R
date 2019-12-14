@@ -2,11 +2,13 @@
 # -- TOPIC SEARCH FUNCS -- #
 # ----------------------- #
 
+#' @export
 infer_query <- function(lda, query) {
   dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))  
   topicmodels::posterior(lda,dtm,lda@control)$topics
 }
 
+#' @export
 lda_search <- function(lda, query, n=10, t=2) {
   dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))
   control <- lda@control
@@ -15,6 +17,7 @@ lda_search <- function(lda, query, n=10, t=2) {
   topicmodels::terms(lda,n)[,post[1:t]]
 }
 
+#' @export
 btm_search <- function(btm, query, n=10, t=2) {
   token <- unlist(strsplit(query, "\\s"))
   docs <- rep(1,times=length(token))
@@ -30,6 +33,7 @@ btm_search <- function(btm, query, n=10, t=2) {
 # -- TOPIC NEIGHBOURS -- #
 # --------------------- #
 
+#' @export
 build_tree <- function(lda, tree=50) {
   d <- dim(lda@gamma)
   vctr <- d[1]  # num docs
@@ -42,6 +46,7 @@ build_tree <- function(lda, tree=50) {
   a
 }
 
+#' @export
 corpus_nn <- function(a, corpus, title=1, neighbours=10, lines=F) {
   res <- a$getNNsByItem(title-1, neighbours+10)
   if (lines) {
@@ -53,6 +58,7 @@ corpus_nn <- function(a, corpus, title=1, neighbours=10, lines=F) {
   }
 }
 
+#' @export
 query_nn <- function(lda, a, corpus, query, neighbours=10, lines=F) {
   prob <- infer_query(lda, query)
   res <- a$getNNsByVector(prob, 3*neighbours)
