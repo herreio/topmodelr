@@ -19,7 +19,7 @@ corpus_prep <- function(corp) {
     corp <- tm::tm_map(corp, tm::content_transformer(tolower))
     corp <- tm::tm_map(corp, function(x) { tm::removeWords(x, corpus_stop()) })
     corp <- tm::tm_map(corp, tm::content_transformer(trim))
-    corp <- tm::tm_map(corp, tm::content_transformer(trim2))
+    tm::tm_map(corp, tm::content_transformer(trim2))
 }
 
 # returns string w/o leading or trailing whitespace
