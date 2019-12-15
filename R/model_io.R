@@ -12,3 +12,10 @@ read_models <- function(paths) {
 name_from_path <- function(path) {
   gsub("\\.[a-zA-Z0-9]+$", "", gsub("^.*\\/", "", path))
 }
+
+#' Get file names given path with pattern
+#'
+#' @export
+get_paths <- function(path=".", pattern=".RDS") {
+  list.files(path, pattern=pattern, full.names=T)
+}
