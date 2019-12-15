@@ -17,7 +17,7 @@ corpus_prep <- function(corp) {
     corp <- tm::tm_map(corp, tm::content_transformer(pnct))
     corp <- tm::tm_map(corp, tm::content_transformer(cntrl))
     corp <- tm::tm_map(corp, tm::content_transformer(tolower))
-    corp <- tm::tm_map(corpus, function(x) { removeWords(x, corpus_stop()) })
+    corp <- tm::tm_map(corp, function(x) { removeWords(x, corpus_stop()) })
     corp <- tm::tm_map(corp, tm::content_transformer(trim))
     corp <- tm::tm_map(corp, tm::content_transformer(trim2))
 }
@@ -34,11 +34,11 @@ lnbr <- function(x) gsub("[\r\n]", " ", x)
 # returns string w/o html tags
 tags <- function (x) gsub("<.*?>", "", x)
 
+# returns string w/o multiple whitespaces
+nums <- function (x) gsub("[[:digit:]]", "", x)
+
 # remove punction marks
 pnct <- function (x) gsub("[[:punct:]]"," ", x)
 
 # remove control characters
 cntrl <- function (x) gsub("[[:cntrl:]]"," ", x)
-
-# returns string w/o multiple whitespaces
-nums <- function (x) gsub("[[:digit:]]", "", x)
