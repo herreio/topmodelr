@@ -14,14 +14,16 @@ Description: For model creation the latent Dirichlet allocation and the
     neighbor library Annoy. The measurement of the document similarity by
     topics can be used to retrieve the top n most similar documents to a
     given document.
-License: What license it uses
 Encoding: UTF-8
 LazyData: true
 Imports:
     BTM,
     LDAvis,
     RcppAnnoy,
+    stopwords,
     stringr,
     tm,
     topicmodels
+Suggests:
+    maxplanckr
 RoxygenNote: 7.0.2
