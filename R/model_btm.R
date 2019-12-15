@@ -29,16 +29,14 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
 
 #' @export
 prepare_bi_corpus <- function(corpus, corpus_id) {
-  res <- stringr::str_split(
-    as.vector(sapply(corpus, function(x) {x$content})), 
-    pattern=" "
-  )
+  res <- sapply(corpus, function(x) {
+    stringr::str_split(x$content, pattern=" ")})
   res_ids <- docids(corpus_id, res)
-  res_ids <- sapply(seq_along(res_ids), function(x) repdoc(res_ids[[x]], length(res[[x]])) )
-  dplyr::tibble("Doc"=unlist(res_ids),"Term"=unlist(res))
+  res_ids <- sapply(seq_along(res_ids), function(x) {repdoc(res_ids[[x]], length(unlist(res[[x]])))} )
+  dplyr::tibble("Doc"=as.character(unlist(res_ids)),"Term"=as.character(unlist(res)))
 }
 
-repdoc <- function(docid,doclen) {
+repdoc <- function(docid, doclen) {
   rep(docid, doclen, doclen)
 }
 
@@ -46,7 +44,12 @@ repids <- function(corpid,corplen) {
   rep(corpid, corplen, corplen)
 }
 
-docids <- function(corpid, docs) {
-  prefix <- repids(corpid, length(docs))
-  paste0(prefix, ":" , seq_along(prefix))
+docids <- function(corpus_id, docs) {
+  prefix <- repids(corpus_id, length(docs))
+  if (is.null(names(docs))) {
+      paste0(prefix, ":" , seq_along(docs))      
+  } else {
+      docid <- name_from_path(names(docs))
+      paste0(prefix, ":" , docid)
+  }
 }
