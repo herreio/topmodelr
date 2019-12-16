@@ -40,7 +40,7 @@ lnbr <- function(x) gsub("[\r\n]", " ", x)
 # returns string w/o html tags
 tags <- function (x) gsub("<.*?>", "", x)
 
-# returns string w/o multiple whitespaces
+# remove digits and words containing digits
 nums <- function (x) gsub("[^ ]*[[:digit:]][^ ]*", "", x, perl=T)
 
 # remove words containing non-ascii characters
