@@ -3,11 +3,12 @@
 # ----------------------- #
 
 #' @export
-fit_bi_model <- function(docid_term, k) {
+fit_bi_model <- function(doc_term, k) {
     cat(paste("fit Biterm model with", k, "topics\n"))
     t1 <- Sys.time()
     set.seed(42)
     cat(paste("start time:", t1, "\n"))
+    docid_term <- prepare_bi_corpus(doc_term)
     fitted.biterm <- BTM::BTM(docid_term, k = k, iter = 1000)
     t2 <- Sys.time()
     cat("done fitting Biterm model!\n")
@@ -17,7 +18,8 @@ fit_bi_model <- function(docid_term, k) {
 }
 
 #' @export
-fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="", model_dir=".") {
+fit_and_save_bi_models <- function(doc_term, topics=seq(25,200,25), fileid="", model_dir=".") {
+    docid_term <- prepare_bi_corpus(doc_term)
     for (k in topics) {
         bimod <- fit_bi_model(docid_term, k)
         saveRDS(bimod, file.path(
