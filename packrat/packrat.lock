@@ -63,6 +63,12 @@ Version: 0.0.14
 Hash: 4797cf0dff8e0f5b4b1c0b5b3a645f0d
 Requires: Rcpp
 
+Package: Rmpfr
+Source: CRAN
+Version: 0.7-2
+Hash: b3fb03f8189ac23f81083378643d5ab1
+Requires: gmp
+
 Package: askpass
 Source: CRAN
 Version: 1.1
@@ -220,6 +226,11 @@ Source: CRAN
 Version: 1.3.1
 Hash: 660bbbe3803c7cf7c9489a7d99a9c0ed
 
+Package: gmp
+Source: CRAN
+Version: 0.5-13.5
+Hash: 2ac5e6cfeeffd190979b998908b0bdca
+
 Package: gtable
 Source: CRAN
 Version: 0.3.0
@@ -280,6 +291,12 @@ Package: lazyeval
 Source: CRAN
 Version: 0.2.2
 Hash: 563563691bea3cde6945a98996d7c166
+
+Package: ldatuning
+Source: CRAN
+Version: 1.0.0
+Hash: d1d991e8a1bf545d98f0ccb0e8662a8d
+Requires: Rmpfr, ggplot2, reshape2, scales, slam, topicmodels
 
 Package: lifecycle
 Source: CRAN
