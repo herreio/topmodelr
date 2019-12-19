@@ -5,10 +5,11 @@
 #' @export
 fit_bi_model <- function(docid_term, k) {
   cat(paste("fit Biterm model with", k, "topics\n"))
+  w <- as.numeric(utlr::agg_elements(docid_term, "Doc")[1,2])
   t1 <- Sys.time()
   set.seed(42)
   cat(paste("start time:", t1, "\n"))
-  fitted.biterm <- BTM::BTM(docid_term, k = k, iter = 1000)
+  fitted.biterm <- BTM::BTM(docid_term, k = k, iter = 1000, window = w)
   t2 <- Sys.time()
   cat("done fitting Biterm model!\n")
   elapsed <- difftime(t2, t1, units="mins")
@@ -28,6 +29,9 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
 
 #' @export
 prepare_bi_corpus <- function(corpus, corpus_id) {
+  if(!require(tm)) {
+    stop("please install tm package!")
+  }
   res <- sapply(corpus, function(x) {
     stringr::str_split(x$content, pattern=" ")})
   res_ids <- docids(corpus_id, res)
