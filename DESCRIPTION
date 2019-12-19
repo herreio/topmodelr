@@ -23,7 +23,8 @@ Imports:
     stopwords,
     stringr,
     tm,
-    topicmodels
+    topicmodels,
+    utlr
 Suggests:
     maxplanckr
 RoxygenNote: 7.0.2
