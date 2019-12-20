@@ -3,6 +3,18 @@
 # ----------------------- #
 
 #' @export
+prepare_dt_corpus <- function(corpus) {
+  tm::DocumentTermMatrix(corpus)
+}
+
+#' @export
+filter_dt_corpus <- function(doc_term) {
+  dtcorp <- dtcorp[,which(slam::col_sums(dtcorp) > 1)]
+  dtcorp <- dtcorp[slam::row_sums(dtcorp) > 1, ]
+  dtcorp[,which(slam::col_sums(dtcorp) > 0)]
+}
+
+#' @export
 fit_model <- function(doc_term, k) {
   cat(paste("fit LDA model with", k, "topics\n"))
   t1 <- Sys.time()

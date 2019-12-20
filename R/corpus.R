@@ -3,25 +3,35 @@
 # ----------------- #
 
 #' @export
-corpus_freq <- function(dtm) {
-  sort(slam::col_sums(dtm), decreasing = T)
+corpus_doc_tokens <- function(doc_term) {
+  slam::row_sums(doc_term)
 }
 
 #' @export
-corpus_filter <- function(dtm, query) {
-  dtm <- dtm[, grepl(query, dtm$dimnames$Terms)]
-  dtm[slam::row_sums(dtm) > 0, ]    # return none empty docs
+corpus_tokens_doc <- function(doc_term) {
+  slam::col_sums(doc_term)
 }
 
 #' @export
-corpus_del_max_freq <- function(dtm, x = 100) {
-  n <- as.numeric(corpus_freq(dtm)[x])
-  dtm <- dtm[,which(slam::col_sums(dtm) < n)]
-  dtm[slam::row_sums(dtm) > 0, ]    # return none empty docs
+corpus_freq <- function(doc_term) {
+  sort(corpus_tokens_doc(doc_term), decreasing = T)
 }
 
 #' @export
-corpus_del_min_freq <- function(dtm, n = 2) {
-  dtm <- dtm[,which(slam::col_sums(dtm) > n)]
-  dtm[slam::row_sums(dtm) > 0, ]    # return none empty docs
+corpus_search <- function(doc_term, query) {
+  doc_term <- doc_term[, grepl(query, doc_term$dimnames$Terms)]
+  doc_term[slam::row_sums(doc_term) > 0, ]    # return none empty docs
+}
+
+#' @export
+corpus_del_max_freq <- function(doc_term, x = 100) {
+  n <- as.numeric(corpus_freq(doc_term)[x])
+  doc_term <- doc_term[,which(slam::col_sums(doc_term) < n)]
+  doc_term[slam::row_sums(doc_term) > 0, ]    # return none empty docs
+}
+
+#' @export
+corpus_del_min_freq <- function(doc_term, n = 2) {
+  doc_term <- doc_term[,which(slam::col_sums(doc_term) > n)]
+  doc_term[slam::row_sums(doc_term) > 0, ]    # return none empty docs
 }

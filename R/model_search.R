@@ -3,29 +3,32 @@
 # ----------------------- #
 
 #' @export
-infer_query <- function(lda, query) {
+lda_infer <- function(lda, query) {
   dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))  
   topicmodels::posterior(lda,dtm,lda@control)$topics
 }
 
 #' @export
 lda_search <- function(lda, query, n=10, t=2) {
-  dtm <- tm::DocumentTermMatrix(tm::VCorpus(tm::VectorSource(query)))
-  control <- lda@control
-  post <- topicmodels::posterior(lda,dtm,control)$topics
+  post <- lda_infer(lda, query)
   post <- order(post, decreasing=TRUE)
   topicmodels::terms(lda,n)[,post[1:t]]
 }
 
 #' @export
-btm_search <- function(btm, query, n=10, t=2) {
+btm_infer <- function(btm, query) {
   token <- unlist(strsplit(query, "\\s"))
   docs <- rep(1,times=length(token))
-  post <- predict(btm, data.frame(docs,token))
+  stats::predict(btm, data.frame(docs,token))
+}
+
+#' @export
+btm_search <- function(btm, query, n=10, t=2, tt=NULL) {
+  post <- btm_infer(btm, query)
   post <- order(post, decreasing=T)
-  ttprob <- terms(btm, top_n=n)[post[1:t]]
-  tt <- sapply(ttprob, function(x) as.character(unlist(x[1])) )
-  colnames(tt) <- sapply(post[1:t], function(x) paste("Topic",x))
+  if(is.null(tt)) tt <- btm_topics_words(btm, n)
+  tt <- tt[,post[1:t]]
+  colnames(tt) <- sapply(post[1:t], function(x) paste("Topic", x))
   tt
 }
 
@@ -38,7 +41,7 @@ build_tree <- function(lda, tree=50) {
   d <- dim(lda@gamma)
   vctr <- d[1]  # num docs
   vdim <- d[2]  # num topics
-  a <- new(RcppAnnoy::AnnoyEuclidean, vdim)
+  a <- methods::new(RcppAnnoy::AnnoyAngular, vdim)
   for (i in seq(1,vctr,1)) {
     a$addItem(i-1, lda@gamma[i, ])
   }
@@ -60,7 +63,7 @@ corpus_nn <- function(a, corpus, title=1, neighbours=10, lines=F) {
 
 #' @export
 query_nn <- function(lda, a, corpus, query, neighbours=10, lines=F) {
-  prob <- infer_query(lda, query)
+  prob <- lda_infer(lda, query)
   res <- a$getNNsByVector(prob, 3*neighbours)
   if(lines) {
     corpus[res+1]
