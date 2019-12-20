@@ -357,6 +357,12 @@ Source: CRAN
 Version: 0.5.0
 Hash: 498643e765d1442ba7b1160a1df3abf9
 
+Package: philentropy
+Source: CRAN
+Version: 0.3.0
+Hash: 7347281bfb849906a3b102833e485bec
+Requires: Rcpp, dplyr
+
 Package: pillar
 Source: CRAN
 Version: 1.4.2
@@ -589,6 +595,21 @@ Package: utf8
 Source: CRAN
 Version: 1.1.4
 Hash: f3f97ce59092abc8ed3fd098a59e236c
+
+Package: utlr
+Source: github
+Version: 0.0.0.9000
+Hash: ff06925ccb915468a0a28a0017af8dff
+Requires: dplyr
+GithubRepo: utlr
+GithubUsername: herreio
+GithubRef: master
+GithubSha1: 153e027945309d7bc33a10a2077356af10c608a7
+RemoteHost: api.github.com
+RemoteRepo: utlr
+RemoteUsername: herreio
+RemoteRef: master
+RemoteSha: 153e027945309d7bc33a10a2077356af10c608a7
 
 Package: vctrs
 Source: CRAN
