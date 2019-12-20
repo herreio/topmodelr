@@ -27,11 +27,18 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
   }
 }
 
+filter_bi_corpus <- function(bicorp) {
+  bicount <- utlr::agg_elements(bicorp, "Term")
+  rare_terms <- bicount[bicount$Total < 2,]$Term
+  bicorp <- bicorp[!(bicorp$Term %in% rare_terms),]
+  bilen <- utlr::agg_elements(bicorp, "Doc")
+  small_doc <- bilen[bilen$Total < 2,]$Doc
+  bicorp[!(bicorp$Doc %in% small_doc),]
+}
+
+#' @importFrom tm VCorpus
 #' @export
 prepare_bi_corpus <- function(corpus, corpus_id) {
-  if(!require(tm)) {
-    stop("please install tm package!")
-  }
   res <- sapply(corpus, function(x) {
     stringr::str_split(x$content, pattern=" ")})
   res_ids <- docids(corpus_id, res)
