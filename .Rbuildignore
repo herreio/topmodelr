@@ -1,4 +1,8 @@
 ^packrat/
 ^\.Rprofile$
+^\.Rprofile2$
+^.*\.Rhistory$
+^dev.R$
+^_$
 ^inst/topmax/lda\.RDS
 ^inst/topmax/btm\.RDS
