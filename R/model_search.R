@@ -29,7 +29,9 @@ btm_search <- function(btm, query, n=10, t=2, tt=NULL) {
   post <- order(post, decreasing=T)
   if(is.null(tt)) tt <- btm_topics_words(btm, n)
   tt <- tt[,post[1:t]]
-  colnames(tt) <- sapply(post[1:t], function(x) paste("Topic", x))
+  if (t > 1) {
+    colnames(tt) <- sapply(post[1:t], function(x) paste("Topic", x))
+  }
   tt
 }
 
