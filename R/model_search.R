@@ -15,11 +15,12 @@ lda_search <- function(lda, query, n=10, t=2) {
   topicmodels::terms(lda,n)[,post[1:t]]
 }
 
+#' @import BTM
 #' @export
 btm_infer <- function(btm, query) {
   token <- unlist(strsplit(query, "\\s"))
   docs <- rep(1,times=length(token))
-  stats::predict(btm, data.frame(docs,token))
+  stats::predict(btm, newdata=data.frame(docs,token))
 }
 
 #' @export
