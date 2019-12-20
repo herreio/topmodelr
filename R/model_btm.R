@@ -27,6 +27,7 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
   }
 }
 
+#' @export
 filter_bi_corpus <- function(bicorp) {
   bicount <- utlr::agg_elements(bicorp, "Term")
   rare_terms <- bicount[bicount$Total < 2,]$Term
