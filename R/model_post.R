@@ -45,6 +45,7 @@ lda_topic_docs <- function(fitted, topic=1, n=10) {
 # -- BTM MODEL FUNCS -- #
 # -------------------- #
 
+#' @importFrom stats terms
 #' @import BTM
 #' @export
 btm_topics_words <- function(fitted, n=10) {

@@ -15,6 +15,7 @@ lda_search <- function(lda, query, n=10, t=2) {
   topicmodels::terms(lda,n)[,post[1:t]]
 }
 
+#' @importFrom stats predict
 #' @import BTM
 #' @export
 btm_infer <- function(btm, query) {
