@@ -9,9 +9,9 @@ prepare_dt_corpus <- function(corpus) {
 
 #' @export
 filter_dt_corpus <- function(doc_term) {
-  dtcorp <- dtcorp[,which(slam::col_sums(dtcorp) > 1)]
-  dtcorp <- dtcorp[slam::row_sums(dtcorp) > 1, ]
-  dtcorp[,which(slam::col_sums(dtcorp) > 0)]
+  doc_term <- doc_term[,which(slam::col_sums(doc_term) > 1)]
+  doc_term <- doc_term[slam::row_sums(doc_term) > 1, ]
+  doc_term[,which(slam::col_sums(doc_term) > 0)]
 }
 
 #' @export
