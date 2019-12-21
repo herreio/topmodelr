@@ -48,7 +48,7 @@ lda_topic_docs <- function(fitted, topic=1, n=10) {
 #' @import BTM
 #' @export
 btm_topics_words <- function(fitted, n=10) {
-  tt <- stats::terms(fitted, top_n=n)
+  tt <- terms(fitted, top_n=n)
   sapply(tt, function(x) as.character(unlist(x[1])))
 }
 
