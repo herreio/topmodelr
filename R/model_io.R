@@ -6,6 +6,16 @@ read_models <- function(paths) {
   lapply(stats::setNames(paths, fnames), readRDS)
 }
 
+#' Get model from list of models created by read_models
+#'
+#' @export
+get_models <- function(models, pattern) {
+  res <- Filter(Negate(is.null), sapply(seq_along(models), function(x) {
+    if(length(grep(pattern,names(models[x])))==1) models[[x]]}))
+  if (length(res) == 1) res[[1]]
+  else res
+}
+
 #' Get file name from full path 
 #'
 #' @export
