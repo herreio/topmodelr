@@ -28,12 +28,12 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
 }
 
 #' @export
-filter_bi_corpus <- function(bicorp) {
+filter_bi_corpus <- function(bicorp, tmin=2, dmin=2) {
   bicount <- utlr::agg_elements(bicorp, "Term")
-  rare_terms <- bicount[bicount$Total < 2,]$Term
+  rare_terms <- bicount[bicount$Total < tmin,]$Term
   bicorp <- bicorp[!(bicorp$Term %in% rare_terms),]
   bilen <- utlr::agg_elements(bicorp, "Doc")
-  small_doc <- bilen[bilen$Total < 2,]$Doc
+  small_doc <- bilen[bilen$Total < dmin,]$Doc
   bicorp[!(bicorp$Doc %in% small_doc),]
 }
 
