@@ -32,5 +32,6 @@ Imports:
     topicmodels,
     utlr
 Suggests:
-    maxplanckr
+    maxplanckr,
+    servr
 RoxygenNote: 7.0.2
