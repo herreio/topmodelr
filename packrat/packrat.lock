@@ -508,6 +508,12 @@ Hash: fa53af4e3ceba05fc79a31bde5962445
 Requires: R6, RColorBrewer, farver, labeling, lifecycle, munsell,
     viridisLite
 
+Package: servr
+Source: CRAN
+Version: 0.15
+Hash: fab18c8d44a1f13fa259073657544ef4
+Requires: httpuv, jsonlite, mime, xfun
+
 Package: sessioninfo
 Source: CRAN
 Version: 1.1.1
@@ -631,6 +637,11 @@ Package: withr
 Source: CRAN
 Version: 2.1.2
 Hash: d534108bcd5f34ec73e9eb523751ba20
+
+Package: xfun
+Source: CRAN
+Version: 0.11
+Hash: d9465c5b37edf541913d74968461fc61
 
 Package: xml2
 Source: CRAN
