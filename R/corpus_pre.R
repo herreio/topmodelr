@@ -3,6 +3,14 @@
 # ---------------------- #
 
 #' @export
+corpus_split <- function(corp, n=0.1) {
+  test_n <- floor(0.1 * length(corp))
+  test_index <- sample(seq_along(corp), test_n)
+  train_index <- setdiff(seq_along(corp), test_index)
+  list("test" = corp[test_index], "train" = corp[train_index])
+}
+
+#' @export
 corpus_create <- function(char_vec) {
     tm::VCorpus(tm::VectorSource(char_vec))
 }
