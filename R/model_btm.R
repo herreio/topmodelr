@@ -3,9 +3,9 @@
 # ----------------------- #
 
 #' @export
-fit_bi_model <- function(docid_term, k) {
+fit_bi_model <- function(docid_term, k, w=NULL) {
   cat(paste("fit Biterm model with", k, "topics\n"))
-  w <- as.numeric(utlr::agg_elements(docid_term, "Doc")[1,2])
+  if (is.null(w)) w <- max_bi_corpus(docid_term)
   t1 <- Sys.time()
   set.seed(42)
   cat(paste("start time:", t1, "\n"))
@@ -55,6 +55,11 @@ filter_bi_corpus <- function(bicorp, tmin=2, dmin=2) {
   bilen <- utlr::agg_elements(bicorp, "Doc")
   small_doc <- bilen[bilen$Total < dmin,]$Doc
   bicorp[!(bicorp$Doc %in% small_doc),]
+}
+
+#' @export
+max_bi_corpus <- function(bicorp) {
+  as.numeric(utlr::agg_elements(docid_term, "Doc")[1,2])
 }
 
 #' @importFrom tm VCorpus
