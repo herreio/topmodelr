@@ -59,7 +59,7 @@ filter_bi_corpus <- function(bicorp, tmin=2, dmin=2) {
 
 #' @export
 max_bi_corpus <- function(bicorp) {
-  as.numeric(utlr::agg_elements(docid_term, "Doc")[1,2])
+  as.numeric(utlr::agg_elements(bicorp, "Doc")[1,2])
 }
 
 #' @importFrom tm VCorpus
