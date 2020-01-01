@@ -59,7 +59,7 @@ filter_bi_corpus <- function(bicorp, tmin=2, dmin=2) {
 
 #' @importFrom tm VCorpus
 #' @export
-prepare_bi_corpus <- function(corpus, corpus_id) {
+prepare_bi_corpus <- function(corpus, corpus_id="corpus") {
   res <- sapply(corpus, function(x) {
     stringr::str_split(x$content, pattern=" ")})
   res_ids <- docids(corpus_id, res)
