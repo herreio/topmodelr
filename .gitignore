@@ -16,6 +16,3 @@ packrat/src/*
 .Rproj.user
 
 *.Rhistory
-
-inst/topmax/*
-!inst/topmax/README
