@@ -27,6 +27,26 @@ fit_and_save_bi_models <- function(docid_term, topics=seq(25,200,25), fileid="",
   }
 }
 
+#' @importFrom stats terms logLik
+#' @import BTM
+#' @export
+fit_and_save_bi_models_full <- function(docid_term, topics=seq(25,200,25), fileid="", model_dir=".") {
+  for (k in topics) {
+    bimod <- fit_bi_model(docid_term, k)
+    bt <- terms(bimod, type="biterms")
+    fit <- logLik(bimod)
+    full <- list("model" = bimod, "count" = bt, "fit" = fit)
+    saveRDS(
+      full,
+      file.path(
+        model_dir,
+        paste0("btm-full_",
+               fileid, "_t",
+               k, "_", Sys.Date(),
+               ".RDS")))
+  }
+}
+
 #' @export
 filter_bi_corpus <- function(bicorp, tmin=2, dmin=2) {
   bicount <- utlr::agg_elements(bicorp, "Term")
