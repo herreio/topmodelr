@@ -34,8 +34,7 @@ fit_and_save_bi_models_full <- function(docid_term, topics=seq(25,200,25), filei
   for (k in topics) {
     bimod <- fit_bi_model(docid_term, k)
     bt <- terms(bimod, type="biterms")
-    fit <- logLik(bimod)
-    full <- list("model" = bimod, "count" = bt, "fit" = fit)
+    full <- list("model" = bimod, "count" = bt)
     saveRDS(
       full,
       file.path(
