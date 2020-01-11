@@ -8,12 +8,7 @@ Authors@R:
            email = "git@herre.io")
 Description: For model creation the latent Dirichlet allocation and the
     biterm topic model via R libraries topicmodels and BTM are used with
-    Gibbs Sampling as inference method. After infering the models, the
-    similarity of the documents can be determined with regard to their
-    topic distributions via the R interface to the approximate nearest
-    neighbor library Annoy. The measurement of the document similarity by
-    topics can be used to retrieve the top n most similar documents to a
-    given document.
+    Gibbs Sampling as inference method.
 License: file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -34,4 +29,6 @@ Imports:
 Suggests:
     maxplanckr,
     servr
+Remotes: herreio/utlr,
+    herreio/maxplanckr
 RoxygenNote: 7.0.2
