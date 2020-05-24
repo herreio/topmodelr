@@ -10,6 +10,8 @@ Description: For model creation the latent Dirichlet allocation and the
     biterm topic model via R libraries topicmodels and BTM are used with
     Gibbs Sampling as inference method.
 License: file LICENSE
+Depends: 
+    R (>= 3.5.0)
 Encoding: UTF-8
 LazyData: true
 Imports:
