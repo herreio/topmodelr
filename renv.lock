@@ -782,12 +782,12 @@
       "Version": "0.0.0.9001",
       "Source": "GitHub",
       "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "utlr",
       "RemoteUsername": "herreio",
+      "RemoteRepo": "utlr",
       "RemoteRef": "HEAD",
-      "RemoteSha": "cfd653b23a56484c3e40f7e354c4d0ca5c49dea4",
-      "Hash": "4bc5073a847adc4e44dbba52bd791400"
+      "RemoteSha": "153189e80b24f1abf228b56cd7a4855bd0033a6f",
+      "RemoteHost": "api.github.com",
+      "Hash": "b79447e046d2ae81c62a12cfa9fbea0b"
     },
     "vctrs": {
       "Package": "vctrs",
