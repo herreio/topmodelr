@@ -1,6 +1,6 @@
-^packrat/
+^renv$
+^renv\.lock$
 ^\.Rprofile$
-^\.Rprofile2$
 ^.*\.Rhistory$
 ^dev.R$
 ^_$
